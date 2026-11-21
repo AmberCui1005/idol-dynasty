@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0e0f13;
+  --color-surface: #171922;
+  --color-surface-2: #1e2130;
+  --color-border: #262a38;
+  --color-line: #32374a;
+  --color-fg: #e6e8ef;
+  --color-muted: #8a90a6;
+  --color-primary: #f0377f;
+  --color-primary-ink: #2a0614;
+  --color-accent: #6e5bff;
+  --color-accent-ink: #ece9ff;
+  --color-good: #2bd98f;
+  --color-warn: #ffb020;
+  --color-bad: #ff4d4f;
+  --color-on-primary: #ffffff;
+  --color-scrim: rgba(8, 9, 12, 0.72);
+  --font-sans: "Avenir Next", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-display: "Didot", "Bodoni MT", "Songti SC", "STSong", "PMingLiU", serif;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --radius-tag: 6px;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+  ::selection {
+    background: #f0377f;
+    color: #fff;
+  }
+}
+
+.modal-shadow {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.scrim {
+  background: var(--color-scrim);
+}
+
+.page-in {
+  animation: page-in 160ms ease-out;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1.2s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.meter {
+  height: 6px;
+  border-radius: 99px;
+  background: var(--color-line);
+  overflow: hidden;
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+html[data-theme="ice"] {
+  --color-bg: #f3f6fb;
+  --color-surface: #ffffff;
+  --color-surface-2: #e7eef8;
+  --color-border: #d5deee;
+  --color-line: #c5d2e6;
+  --color-fg: #152033;
+  --color-muted: #5c6b84;
+  --color-primary: #1d4ed8;
+  --color-primary-ink: #dbe7ff;
+  --color-accent: #0369a1;
+  --color-accent-ink: #e0f2fe;
+  --color-good: #047857;
+  --color-warn: #b45309;
+  --color-bad: #dc2626;
+  --color-on-primary: #ffffff;
+  --color-scrim: rgba(15, 23, 42, 0.46);
+  color-scheme: light;
+}
+
+html[data-theme="ink"] {
+  color-scheme: dark;
+}
+
+html[data-theme="ice"] ::selection {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+html[data-theme="ice"] .modal-shadow {
+  box-shadow: 0 12px 40px rgba(21, 40, 80, 0.16);
+}
+
+.stat-top {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.stat-next {
+  background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  color: var(--color-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-in,
+  .blink {
+    animation: none;
+  }
+}
