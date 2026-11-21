@@ -233,7 +233,8 @@ function runTeam(g: Game, push: Push) {
     for (const m of ms) {
       m.energy = clamp(m.energy - 8, 0, m.energyMax);
       m.mood = clamp(m.mood + 2, 0, 100);
-      const top = ATTRS.slice().sort((a, b) => m.attr[b.key] - m.attr[a.key])[0]!;
+      // 外形是天生的，不参与排行，团练只会强化最强的一项可训练能力。
+      const top = ATTRS.filter((a) => a.key !== "VIS").sort((a, b) => m.attr[b.key] - m.attr[a.key])[0]!;
       if (m.attr[top.key] < m.pot) m.attr[top.key] = r2(clamp(m.attr[top.key] + 1, 0, Math.min(100, m.pot)));
     }
     group.teamWeeks = Math.min(15, group.teamWeeks + 1);
