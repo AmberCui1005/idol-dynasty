@@ -98,7 +98,7 @@ export function Onboard() {
           <Field label={`预计出道 ${size} 人`}>
             <input className="w-full accent-primary" type="range" min={2} max={9} value={size} onChange={(e) => setSize(Number(e.target.value))} />
           </Field>
-          <p className="text-xs text-muted">{size <= 3 ? "2–3 人曝光高，但一个人倒下就停摆。" : size >= 7 ? "7–9 人巡演更赚，固定成本和内斗都更高。" : "4–6 人是最稳的编制。"} 海选按 3 倍报名，这一轮是 {audition} 人。开局现金 {DATA.START_CASH.toLocaleString("zh-CN")} 万元。</p>
+          <p className="text-xs text-muted">{size <= 3 ? "2–3 人曝光高，但一个人倒下就停摆。" : size >= 7 ? "7–9 人巡演更赚，固定成本和内斗都更高。" : "4–6 人是最稳的编制。"} 海选桉 3 倍报名，这一轮是 {audition} 人。开局现金 {DATA.START_CASH.toLocaleString("zh-CN")} 万元。</p>
           <div className="grid gap-2 sm:grid-cols-2">
             <button
               type="button"
@@ -154,9 +154,9 @@ export function Onboard() {
           </div>
           <p className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted">
             <span className="stat-top rounded-md px-1.5 py-0.5">最高</span>
-            这人自己最强的一项
+            可训练能力里最强的一项
             <span className="stat-next rounded-md px-1.5 py-0.5">次高</span>
-            第二强。外形是天生的，通常高于唱跳，练不上去。
+            第二强。外形是天生的，排在最左、不参与排行，只有天生丽质才会点亮。
           </p>
           <div className="grid gap-3 lg:grid-cols-2">
             {preview.map((s) => {
