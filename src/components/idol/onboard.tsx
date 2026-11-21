@@ -98,7 +98,7 @@ export function Onboard() {
           <Field label={`预计出道 ${size} 人`}>
             <input className="w-full accent-primary" type="range" min={2} max={9} value={size} onChange={(e) => setSize(Number(e.target.value))} />
           </Field>
-          <p className="text-xs text-muted">{size <= 3 ? "2–3 人曝光高，但一个人倒下就停摆。" : size >= 7 ? "7–9 人巡演更赚，固定成本和内斗都更高。" : "4–6 人是最稳的编制。"} 海选桉 3 倍报名，这一轮是 {audition} 人。开局现金 {DATA.START_CASH.toLocaleString("zh-CN")} 万元。</p>
+          <p className="text-xs text-muted">{size <= 3 ? "2–3 人曝光高，但一个人倒下就停摆。" : size >= 7 ? "7–9 人巡演更赚，固定成本和内斗都更高。" : "4–6 人是最稳的编制。"} 海选按 3 倍报名，这一轮是 {audition} 人。开局现金 {DATA.START_CASH.toLocaleString("zh-CN")} 万元。</p>
           <div className="grid gap-2 sm:grid-cols-2">
             <button
               type="button"
