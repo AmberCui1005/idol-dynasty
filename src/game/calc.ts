@@ -41,7 +41,8 @@ export function gini(values: number[]) {
 }
 
 export function attrLabel(m: { attr: Member["attr"] }) {
-  const top = ATTRS.slice().sort((a, b) => m.attr[b.key] - m.attr[a.key])[0]!;
+  // 外形是天生的，不参与能力排行，所以不可能是「外形倾向」。
+  const top = ATTRS.filter((a) => a.key !== "VIS").sort((a, b) => m.attr[b.key] - m.attr[a.key])[0]!;
   return top.name + "倾向";
 }
 
