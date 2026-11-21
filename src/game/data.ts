@@ -56,10 +56,10 @@ export const DATA = {
 };
 
 export const ATTRS: { key: AttrKey; name: string }[] = [
+  { key: "VIS", name: "外形" },
   { key: "VOC", name: "唱功" },
   { key: "DAN", name: "舞蹈" },
   { key: "RAP", name: "说唱" },
-  { key: "VIS", name: "外形" },
   { key: "VAR", name: "综艺" },
   { key: "ACT", name: "演技" },
   { key: "STA", name: "舞台" },
