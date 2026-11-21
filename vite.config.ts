@@ -166,18 +166,38 @@ export default defineConfig(({ command, isPreview }) => ({
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
     grokPwaPlugin(),
     tailwindcss(),
-    tanstackStart(),
-    ...(command === "build" || isPreview
-      ? [
-          nitro({
-            preset: "vercel",
-            // Auto-registers server/middleware/* (the PWA install page +
-            // manifest + head-tag middleware). Nitro v3 defaults serverDir to
-            // false, so removing this silently unwires /?install=1 on deploys.
-            serverDir: "./server",
-          }),
-        ]
-      : []),
+    tanstackStart(
+      // CF_STATIC=1 时走 SPA 模式：产物是纯静态文件，可以直接丢 Cloudflare Pages。
+      process.env.CF_STATIC === "1"
+        ? {
+            spa: {
+              enabled: true,
+              maskPath: "/",
+              prerender: {
+                enabled: true,
+                outputPath: "/index.html",
+                crawlLinks: false,
+                retryCount: 3,
+                retryDelay: 100,
+                headers: {},
+              },
+            },
+          }
+        : undefined,
+    ),
+    ...(process.env.CF_STATIC === "1"
+      ? []
+      : command === "build" || isPreview
+        ? [
+            nitro({
+              preset: "vercel",
+              // Auto-registers server/middleware/* (the PWA install page +
+              // manifest + head-tag middleware). Nitro v3 defaults serverDir to
+              // false, so removing this silently unwires /?install=1 on deploys.
+              serverDir: "./server",
+            }),
+          ]
+        : []),
     viteReact(),
   ],
 }));
